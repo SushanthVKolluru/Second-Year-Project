@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>Aceso</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Aceso</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="homepage.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a href="medication_form.html" class="nav-link">Medication Form</a>
+        </li>
+        <li class="nav-item"><a href="view_medication.html" class="nav-link">View Medication</a></li>
+        <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main style="padding: 30px;">
+
+    <div id="login-form">
+    <h1 style="text-align: center;">Login Form</h1>
+
+    <form style="max-width: 500px; margin: auto;">
+      <div class="form-group">
+        <label for="email_field">Email address</label>
+        <input type="email" class="form-control" id="email_field" aria-describedby="emailHelp"
+          placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="password_field">Password</label>
+        <input type="password" class="form-control" id="password_field" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+  </div>
+
+    <div id="user_div" style="text-align: center;" class="loggedin-div">
+      <h3>Welcome User</h3>
+      <p id="user_para">Welcome to Firebase web login Example. You're currently logged in.</p>
+      <p>You will be redirected to homepage in 5 seconds...</p>
+    </div>
+
+  </main>
+
+
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+  <script>
+    // Initialize Firebase
+    var config = {
+    apiKey: "AIzaSyCJ-7VYYopbk13NQ51tz31ItgJrxTJS4hI",
+    authDomain: "team10dispenser.firebaseapp.com",
+    databaseURL: "https://team10dispenser.firebaseio.com",
+    projectId: "team10dispenser",
+    storageBucket: "team10dispenser.appspot.com",
+    messagingSenderId: "532601770697",
+    appId: "1:532601770697:web:c5853313ca0b2076307318",
+    measurementId: "G-2CNKYC136Y"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script src="login.js"></script>
+  <script>
+    $("form").on('submit', function (e) {
+      e.preventDefault();
+      login();
+    });
+  </script>
+
+</body>
+
+</html>

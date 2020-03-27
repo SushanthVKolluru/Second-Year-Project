@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Aceso</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Aceso</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="homepage.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="medication_form.html" class="nav-link">Medication Form</a>
+                </li>
+                <li class="nav-item"><a href="view_medication.html" class="nav-link">View Medication</a></li>
+                <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+            </ul>
+            <ul id="login-ul" class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a id="text-email" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        email
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" onclick="logout();return false;" href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="main" style="text-align: center;margin-top: 20px;">
+            <h1 style="text-align: center;">
+                Settings
+            </h1>
+            <br>
+            <form onsubmit="return false;">
+                <div class="form-group row">
+                    <label for="morning-input" class="col-2 col-form-label">Morning</label>
+                    <div class="col-10">
+                        <input class="form-control" type="time" value="08:00:00" id="morning-input">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="afternoon-input" class="col-2 col-form-label">Afternoon</label>
+                    <div class="col-10">
+                        <input class="form-control" type="time" value="12:00:00" id="afternoon-input">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="evening-input" class="col-2 col-form-label">Evening</label>
+                    <div class="col-10">
+                        <input class="form-control" type="time" value="16:00:00" id="evening-input">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="night-input" class="col-2 col-form-label">Night</label>
+                    <div class="col-10">
+                        <input class="form-control" type="time" value="20:00:00" id="night-input">
+                    </div>
+                </div>
+                <button type="submit" onclick="getData();" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </main>
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script>
+        function getData() {
+            console.log(document.getElementById('evening-input').value);
+        }
+
+        var config = {
+            apiKey: "AIzaSyCJ-7VYYopbk13NQ51tz31ItgJrxTJS4hI",
+            authDomain: "team10dispenser.firebaseapp.com",
+            databaseURL: "https://team10dispenser.firebaseio.com",
+            projectId: "team10dispenser",
+            storageBucket: "team10dispenser.appspot.com",
+            messagingSenderId: "532601770697",
+            appId: "1:532601770697:web:c5853313ca0b2076307318",
+            measurementId: "G-2CNKYC136Y"
+        };
+        firebase.initializeApp(config);
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                // User is signed in.
+                document.getElementById('text-email').innerHTML = user.email;
+            } else {
+                document.getElementById('login-ul').style.display = "none";
+            }
+        });
+
+        function logout() {
+            firebase.auth().signOut();
+        }
+    </script>
+</body>
+
+</html>
